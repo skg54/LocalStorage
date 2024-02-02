@@ -67,7 +67,7 @@ final class Storage<Value>: NSObject, ObservableObject {
 @available(iOS 13.0, macOS 12.0,  *)
 extension LocalStorage where Value == Bool {
     public init(wrappedValue: Value, _ key: String, store: UserDefaults? = nil) {
-        let store = (store ?? .standard)
+        let store = (store ?? UserDefaults(suiteName: "group.com.weatherMarine")!)
         let initialValue = store.value(forKey: key) as? Value ?? wrappedValue
         self.init(value: initialValue, store: store, key: key, transform: {
             $0 as? Value
@@ -80,7 +80,7 @@ extension LocalStorage where Value == Bool {
 @available(iOS 13.0, macOS 12.0,  *)
 extension LocalStorage where Value == Int {
     public init(wrappedValue: Value, _ key: String, store: UserDefaults? = nil) {
-        let store = (store ?? .standard)
+        let store = (store ?? UserDefaults(suiteName: "group.com.weatherMarine")!)
         let initialValue = store.value(forKey: key) as? Value ?? wrappedValue
         self.init(value: initialValue, store: store, key: key, transform: {
             $0 as? Value
@@ -93,7 +93,7 @@ extension LocalStorage where Value == Int {
 @available(iOS 13.0, macOS 12.0,  *)
 extension LocalStorage where Value == Double {
     public init(wrappedValue: Value, _ key: String, store: UserDefaults? = nil) {
-        let store = (store ?? .standard)
+        let store = (store ?? UserDefaults(suiteName: "group.com.weatherMarine")!)
         let initialValue = store.value(forKey: key) as? Value ?? wrappedValue
         self.init(value: initialValue, store: store, key: key, transform: {
             $0 as? Value
@@ -106,7 +106,7 @@ extension LocalStorage where Value == Double {
 @available(iOS 13.0, macOS 12.0,  *)
 extension LocalStorage where Value == String {
     public init(wrappedValue: Value, _ key: String, store: UserDefaults? = nil) {
-        let store = (store ?? .standard)
+        let store = (store ?? UserDefaults(suiteName: "group.com.weatherMarine")!)
         let initialValue = store.value(forKey: key) as? Value ?? wrappedValue
         self.init(value: initialValue, store: store, key: key, transform: {
             $0 as? Value
@@ -119,7 +119,7 @@ extension LocalStorage where Value == String {
 @available(iOS 13.0, macOS 12.0,  *)
 extension LocalStorage where Value == URL {
     public init(wrappedValue: Value, _ key: String, store: UserDefaults? = nil) {
-        let store = (store ?? .standard)
+        let store = (store ?? UserDefaults(suiteName: "group.com.weatherMarine")!)
         let initialValue = store.url(forKey: key) ?? wrappedValue
         self.init(value: initialValue, store: store, key: key, transform: {
             ($0 as? String).flatMap(URL.init)
@@ -132,7 +132,7 @@ extension LocalStorage where Value == URL {
 @available(iOS 13.0, macOS 12.0,  *)
 extension LocalStorage where Value == Data {
     public init(wrappedValue: Value, _ key: String, store: UserDefaults? = nil) {
-        let store = (store ?? .standard)
+        let store = (store ?? UserDefaults(suiteName: "group.com.weatherMarine")!)
         let initialValue = store.value(forKey: key) as? Value ?? wrappedValue
         self.init(value: initialValue, store: store, key: key, transform: {
             $0 as? Value
@@ -145,7 +145,7 @@ extension LocalStorage where Value == Data {
 @available(iOS 13.0, macOS 12.0,  *)
 extension LocalStorage where Value: Codable {
     public init(wrappedValue: Value, _ key: String, store: UserDefaults? = nil) {
-        let store = (store ?? .standard)
+        let store = (store ?? UserDefaults(suiteName: "group.com.weatherMarine")!)
         let initialValue = store.data(forKey: key)
         var d = wrappedValue
         if let v = initialValue {
@@ -164,7 +164,7 @@ extension LocalStorage where Value: Codable {
 @available(iOS 13.0, macOS 12.0,  *)
 extension LocalStorage where Value : RawRepresentable, Value.RawValue == Int {
     public init(wrappedValue: Value, _ key: String, store: UserDefaults? = nil) {
-        let store = (store ?? .standard)
+        let store = (store ?? UserDefaults(suiteName: "group.com.weatherMarine")!)
         let rawValue = store.value(forKey: key) as? Int
         let initialValue = rawValue.flatMap(Value.init) ?? wrappedValue
         self.init(value: initialValue, store: store, key: key, transform: {
@@ -178,7 +178,7 @@ extension LocalStorage where Value : RawRepresentable, Value.RawValue == Int {
 @available(iOS 13.0, macOS 12.0,  *)
 extension LocalStorage where Value : RawRepresentable, Value.RawValue == String {
     public init(wrappedValue: Value, _ key: String, store: UserDefaults? = nil) {
-        let store = (store ?? .standard)
+        let store = (store ?? UserDefaults(suiteName: "group.com.weatherMarine")!)
         let rawValue = store.value(forKey: key) as? String
         let initialValue = rawValue.flatMap(Value.init) ?? wrappedValue
         self.init(value: initialValue, store: store, key: key, transform: {
