@@ -36,7 +36,7 @@ import SwiftUI
 final class Storage<Value>: NSObject, ObservableObject {
     @Published var value: Value
     private let defaultValue: Value
-    private let store: UserDefaults
+    private let store: UserDefaults(suiteName: "group.com.weatherMarine")! //UserDefaults
     private let keyPath: String
     private let transform: (Any?) -> Value?
 
