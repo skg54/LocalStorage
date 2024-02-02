@@ -43,7 +43,7 @@ final class Storage<Value>: NSObject, ObservableObject {
     init(value: Value, store: UserDefaults, key: String, transform: @escaping (Any?) -> Value?) {
         self.value = value
         self.defaultValue = value
-        self.store = UserDefaults(suiteName: "group.com.weatherMarine")!
+        self.store = store //UserDefaults(suiteName: "group.com.weatherMarine")!
         self.keyPath = key
         self.transform = transform
         super.init()
